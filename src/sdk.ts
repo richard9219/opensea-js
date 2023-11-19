@@ -996,7 +996,11 @@ export class OpenSeaSDK {
       openseaSellerFeeBasisPoints = +feesToBasisPoints(fees?.openseaFees);
       devSellerFeeBasisPoints = +feesToBasisPoints(fees?.sellerFees);
     }
-
+    
+    console.log(openseaBuyerFeeBasisPoints)
+    console.log(devBuyerFeeBasisPoints)
+    console.log(openseaSellerFeeBasisPoints)
+    console.log(devSellerFeeBasisPoints)
     return {
       totalBuyerFeeBasisPoints:
         openseaBuyerFeeBasisPoints + devBuyerFeeBasisPoints,
