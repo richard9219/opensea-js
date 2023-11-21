@@ -502,7 +502,16 @@ export class OpenSeaAPI {
         chain,
         "address",
         address,
+        "identifier",
+        identifier,
       );
+
+      console.log(
+        "opensea-js:API-Endpoint/getNFTPath",
+        "getNFTPath(chain, address, identifier)",
+        getNFTPath(chain, address, identifier),
+      );
+
       response = await this.get<GetNFTResponse>(
         getNFTPath(chain, address, identifier),
       );
