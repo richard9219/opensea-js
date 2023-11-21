@@ -594,7 +594,7 @@ export class OpenSeaSDK {
       endPrice,
     );
 
-    const collection = await this.api.getCollection("pizzap721");
+    const collection = await this.api.getCollection(nft.collection);
     console.log(
       "opensea-js:API-Endpoint/createListing/getCollection",
       "collection",
