@@ -51,6 +51,7 @@ import {
   OpenSeaFungibleToken,
   AssetWithTokenStandard,
   AssetWithTokenId,
+  SafelistStatus,
 } from "./types";
 import {
   delay,
@@ -594,205 +595,134 @@ export class OpenSeaSDK {
       endPrice,
     );
 
-    const collection = await this.api.getCollection(nft.collection);
-    // const collection = {
-    //   // collection: "pizzap721",
-    //   name: "PAI Art",
-    //   description: "Pizzap is more than just an art community; it's a gateway to a new era of creativity, powered by artificial intelligence. We're committed to empowering digital artists and helping them realize the full potential of their work.",
-    //   image_url: "https://raw.seadn.io/files/6de33fdd69120bc3c46a6da4ec0ed84b.png",
-    //   banner_image_url: "",
-    //   owner: "0x3162175ff0fe037e53573c6761afc54ea9449988",
-    //   safelist_status: "not_requested",
-    //   category: "art",
-    //   is_disabled: false,
-    //   is_nsfw: false,
-    //   trait_offers_enabled: false,
-    //   collection_offers_enabled: true,
-    //   opensea_url: "https://opensea.io/collection/pizzap721",
-    //   project_url: "",
-    //   wiki_url: "",
-    //   discord_url: "",
-    //   telegram_url: "",
-    //   twitter_username: "",
-    //   instagram_username: "",
-    //   contracts: [
-    //     {
-    //       address: "0x169625caf5d3f14e8d9f680db6923343b80d1b1e",
-    //       chain: "optimism"
-    //     }
-    //   ],
-    //   editors: [
-    //     "0x3162175ff0fe037e53573c6761afc54ea9449988"
-    //   ],
-    //   fees: [
-    //     {
-    //       "fee": 2.5,
-    //       "recipient": "0x0000a26b00c1f0df003000390027140000faa719",
-    //       "required": true
-    //     }
-    //   ]
-    // }
-    //     const collectionStats={
-    //       // One Minute
-    //   one_minute_volume: 0,
-    //   one_minute_change:  0,
-    //   one_minute_difference:  0,
-    //   one_minute_sales:  0,
-    //   one_minute_sales_change:  0,
-    //   one_minute_average_price:  0,
+    // const collection = await this.api.getCollection(nft.collection);
+    const date = new Date();
+    const map1: Map<string, number> = new Map([
+      ["0x0000a26b00c1f0df003000390027140000faa719", 250],
+    ]);
+    const map2: Map<string, number> = new Map([]);
 
-    //   // Five Minute
-    //   five_minute_volume: 0,
-    //   five_minute_change: 0,
-    //   five_minute_difference:  0,
-    //   five_minute_sales:  0,
-    //   five_minute_sales_change:  0,
-    //   five_minute_average_price:  0,
+    const collection = {
+      createdDate: date,
+      name: "PAI Art",
+      description:
+        "Pizzap is more than just an art community; it's a gateway to a new era of creativity, powered by artificial intelligence. We're committed to empowering digital artists and helping them realize the full potential of their work.",
+      slug: "pizzap721",
+      editors: ["0x3162175ff0fe037e53573c6761afc54ea9449988"],
+      hidden: false,
+      featured: false,
+      featuredImageUrl:
+        "https://i.seadn.io/s/raw/files/6de33fdd69120bc3c46a6da4ec0ed84b.png?w=500&auto=format",
+      displayData: { card_display_style: "contain", images: null },
+      safelistRequestStatus: SafelistStatus.NOT_REQUESTED,
+      paymentTokens: [
+        {
+          name: "Ether",
+          symbol: "ETH",
+          decimals: 18,
+          address: "0x0000000000000000000000000000000000000000",
+          imageUrl:
+            "https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg",
+          ethPrice: "1",
+          usdPrice: "1963.83",
+        },
+        {
+          name: "Wrapped Ether",
+          symbol: "WETH",
+          decimals: 18,
+          address: "0x4200000000000000000000000000000000000006",
+          imageUrl:
+            "https://openseauserdata.com/files/accae6b6fb3888cbff27a013729c22dc.svg",
+          ethPrice: "1",
+          usdPrice: "1964.32",
+        },
+      ],
+      openseaBuyerFeeBasisPoints: 0,
+      openseaSellerFeeBasisPoints: 250,
+      devBuyerFeeBasisPoints: 0,
+      devSellerFeeBasisPoints: 0,
+      payoutAddress: "",
+      imageUrl:
+        "https://i.seadn.io/s/raw/files/6de33fdd69120bc3c46a6da4ec0ed84b.png?w=500&auto=format",
+      largeImageUrl:
+        "https://i.seadn.io/s/raw/files/6de33fdd69120bc3c46a6da4ec0ed84b.png?w=500&auto=format",
+      stats: {
+        one_minute_volume: 0,
+        one_minute_change: 0,
+        one_minute_sales: 0,
+        one_minute_sales_change: 0,
+        one_minute_average_price: 0,
+        one_minute_difference: 0,
+        five_minute_volume: 0,
+        five_minute_change: 0,
+        five_minute_sales: 0,
+        five_minute_sales_change: 0,
+        five_minute_average_price: 0,
+        five_minute_difference: 0,
+        fifteen_minute_volume: 0,
+        fifteen_minute_change: 0,
+        fifteen_minute_sales: 0,
+        fifteen_minute_sales_change: 0,
+        fifteen_minute_average_price: 0,
+        fifteen_minute_difference: 0,
+        thirty_minute_volume: 0,
+        thirty_minute_change: 0,
+        thirty_minute_sales: 0,
+        thirty_minute_sales_change: 0,
+        thirty_minute_average_price: 0,
+        thirty_minute_difference: 0,
+        one_hour_volume: 0,
+        one_hour_change: 0,
+        one_hour_sales: 0,
+        one_hour_sales_change: 0,
+        one_hour_average_price: 0,
+        one_hour_difference: 0,
+        six_hour_volume: 0,
+        six_hour_change: 0,
+        six_hour_sales: 0,
+        six_hour_sales_change: 0,
+        six_hour_average_price: 0,
+        six_hour_difference: 0,
+        one_day_volume: 0,
+        one_day_change: 0,
+        one_day_sales: 0,
+        one_day_sales_change: 0,
+        one_day_average_price: 0,
+        one_day_difference: 0,
+        seven_day_volume: 0.0001,
+        seven_day_change: 0.0001,
+        seven_day_sales: 1,
+        seven_day_average_price: 0.0001,
+        seven_day_difference: 1,
+        thirty_day_volume: 0.0001,
+        thirty_day_change: 0.0001,
+        thirty_day_sales: 1,
+        thirty_day_average_price: 0.0001,
+        thirty_day_difference: 1,
+        total_volume: 0.0001,
+        total_sales: 1,
+        total_supply: 2,
+        count: 2,
+        num_owners: 2,
+        average_price: 0.0001,
+        num_reports: 0,
+        market_cap: 0.0002,
+        floor_price: 0,
+      },
+      traitStats: {},
+      externalLink: "",
+      wikiLink: "",
+      fees: {
+        openseaFees: map1,
+        sellerFees: map2,
+      },
+    };
 
-    //   // Fifteen Minute
-    //   fifteen_minute_volume:  0,
-    //   fifteen_minute_change:  0,
-    //   fifteen_minute_difference:  0,
-    //   fifteen_minute_sales:  0,
-    //   fifteen_minute_sales_change:  0,
-    //   fifteen_minute_average_price:  0,
-
-    //   // Thirty Minute
-    //   thirty_minute_volume:  0,
-    //   thirty_minute_change:  0,
-    //   thirty_minute_difference:  0,
-    //   thirty_minute_sales:  0,
-    //   thirty_minute_sales_change:  0,
-    //   thirty_minute_average_price:  0,
-
-    //   // One Hour
-    //   one_hour_volume:  0,
-    //   one_hour_change:  0,
-    //   one_hour_sales: 0,
-    //   one_hour_sales_change:  0,
-    //   one_hour_average_price:  0,
-    //   one_hour_difference:  0,
-
-    //   // Six Hour
-    //   six_hour_volume:  0,
-    //   six_hour_change:  0,
-    //   six_hour_sales:  0,
-    //   six_hour_sales_change:  0,
-    //   six_hour_average_price:  0,
-    //   six_hour_difference:  0,
-
-    //   // One Day
-    //   one_day_volume:  0,
-    //   one_day_change:  0,
-    //   one_day_sales:  0,
-    //   one_day_sales_change:  0,
-    //   one_day_average_price:  0,
-    //   one_day_difference:  0,
-
-    //   // Seven Day
-    //   seven_day_volume:  0,
-    //   seven_day_change:  0,
-    //   seven_day_sales:  0,
-    //   seven_day_average_price:  0,
-    //   seven_day_difference:  0,
-
-    //   // Thirty Day
-    //   thirty_day_volume:  0,
-    //   thirty_day_change: 0,
-    //   thirty_day_sales:  0,
-    //   thirty_day_average_price:  0,
-    //   thirty_day_difference:  0,
-
-    //   // Total
-    //   total_volume: 0.0001,
-    //   total_sales:  1,
-    //   total_supply:  0,
-    //   count:  0,
-    //   num_owners:  0,
-    //   average_price: 0.0001,
-    //   num_reports:  0,
-    //   market_cap:  0.0002,
-    //   floor_price:  0,
-    //     }
-
-    //     const payTokenETH = {
-    //   name: "ETH",
-    //   symbol: "ETH",
-    //   decimals: 18,
-    //   address: "0x0000000000000000000000000000000000000000",
-    //   imageUrl: "",
-    //   ethPrice: "",
-    //   usdPrice: "",
-    //     }
-
-    //   const openseaFees ={
-    //           "fee": 2.5,
-    //           // "recipient": "0x0000a26b00c1f0df003000390027140000faa719",
-    //           // "required": true
-    //   }
-    //     const fees = {
-    //       openseaFees: openseaFees,
-    //       sellerFees: {},
-    //     }
-
-    // const currentDate = new Date();
-    // const collection = {
-    //       /** Name of the collection */
-    //   name: "PAI Art",
-    //   /** The identifier of the collection. */
-    //   slug: "pizzap721",
-    //   /** Accounts allowed to edit this collection */
-    //   editors: [
-    //         "0x3162175ff0fe037e53573c6761afc54ea9449988"
-    //       ],
-    //   /** Whether this collection is hidden from the homepage */
-    //   hidden: false,
-    //   /** Whether this collection is featured */
-    //   featured: false,
-    //   /** Date collection was created */
-    //   createdDate: currentDate,
-
-    //   /** Description of the collection */
-    //   description: "Pizzap is more than just an art community; it's a gateway to a new era of creativity, powered by artificial intelligence. We're committed to empowering digital artists and helping them realize the full potential of their work.",
-    //   /** Image for the collection */
-    //   imageUrl: "https://raw.seadn.io/files/6de33fdd69120bc3c46a6da4ec0ed84b.png",
-    //   /** Image for the collection, large */
-    //   largeImageUrl: "https://raw.seadn.io/files/6de33fdd69120bc3c46a6da4ec0ed84b.png",
-    //   /** Image for the collection when featured */
-    //   featuredImageUrl: "",
-    //   /** Object with stats about the collection */
-    //       stats: collectionStats,
-    //   /** Data about displaying cards */
-    //   displayData: {},
-    //   /** The collection's approval status */
-    //       safelistRequestStatus: SafelistStatus.APPROVED,
-    //   /** Tokens allowed for this collection */
-    //   paymentTokens: [payTokenETH],
-    //   /** Address for dev fee payouts */
-    //   payoutAddress: "",
-    //   /** Array of trait types for the collection */
-    //       traitStats: {},
-    //   /** Link to the collection's main website */
-    //   externalLink: "",
-    //   /** Link to the collection's wiki, if available */
-    //   wikiLink: "",
-    //   /** Map of collection fees holding OpenSea and seller fees */
-    //   fees: fees,
-    //    /** Fee for OpenSea levied on sellers */
-    //   openseaSellerFeeBasisPoints: 0,
-    //   /** Fee for OpenSea levied on buyers */
-    //   openseaBuyerFeeBasisPoints: 0,
-    //   /** Fee for the collection owner levied on sellers */
-    //   devSellerFeeBasisPoints: 0,
-    //   /** Fee for the collection owner levied on buyers */
-    //   devBuyerFeeBasisPoints: 0,
-    //     }
-
-    console.log(
-      "opensea-js:API-Endpoint/createListing/getCollection",
-      "collection",
-      collection,
-    );
+    // console.log(
+    //   "opensea-js:API-Endpoint/createListing/getCollection",
+    //   "collection",
+    //   collection,
+    // );
     const { sellerFee, openseaSellerFees, collectionSellerFees } =
       await this.getFees({
         collection,
