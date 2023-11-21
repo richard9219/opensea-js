@@ -666,7 +666,7 @@ export class OpenSeaAPI {
       url: `${this.apiBaseUrl}${apiPath}`,
       ...opts,
     };
-
+    console.log("opensea-js:API-Endpoint/post", JSON.stringify(body));
     return await this._fetch(options, body);
   }
 
