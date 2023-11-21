@@ -538,9 +538,15 @@ export class OpenSeaSDK {
       asset.tokenAddress,
       asset.tokenId,
     );
+    console.log("opensea-js:API-Endpoint/createListing/getNFT", "nft", nft);
     const offerAssetItems = this.getNFTItems(
       [nft],
       [BigNumber.from(quantity ?? 1)],
+    );
+    console.log(
+      "opensea-js:API-Endpoint/createListing/getNFTItems",
+      "offerAssetItems",
+      offerAssetItems,
     );
 
     if (englishAuction && paymentTokenAddress == ethers.constants.AddressZero) {
@@ -556,8 +562,20 @@ export class OpenSeaSDK {
       startAmount,
       endAmount ?? undefined,
     );
+    console.log(
+      "opensea-js:API-Endpoint/createListing/_getPriceParameters",
+      "basePrice",
+      basePrice,
+      "endPrice",
+      endPrice,
+    );
 
     const collection = await this.api.getCollection(nft.collection);
+    console.log(
+      "opensea-js:API-Endpoint/createListing/getCollection",
+      "collection",
+      collection,
+    );
 
     const { sellerFee, openseaSellerFees, collectionSellerFees } =
       await this.getFees({
@@ -566,11 +584,25 @@ export class OpenSeaSDK {
         startAmount: basePrice,
         endAmount: endPrice,
       });
+    console.log(
+      "opensea-js:API-Endpoint/createListing/getFees",
+      "sellerFee",
+      sellerFee,
+      "openseaSellerFees",
+      openseaSellerFees,
+      "collectionSellerFees",
+      collectionSellerFees,
+    );
     const considerationFeeItems = [
       sellerFee,
       ...openseaSellerFees,
       ...collectionSellerFees,
     ];
+    console.log(
+      "opensea-js:API-Endpoint/createListing/considerationFeeItems",
+      "considerationFeeItems",
+      considerationFeeItems,
+    );
 
     if (buyerAddress) {
       considerationFeeItems.push(
@@ -599,7 +631,11 @@ export class OpenSeaSDK {
       accountAddress,
     );
     const order = await executeAllActions();
-
+    console.log(
+      "opensea-js:API-Endpoint/createListing/createOrder",
+      "order",
+      order,
+    );
     return this.api.postOrder(order, {
       protocol: "seaport",
       protocolAddress: DEFAULT_SEAPORT_CONTRACT_ADDRESS,
