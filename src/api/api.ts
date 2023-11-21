@@ -492,7 +492,7 @@ export class OpenSeaAPI {
     chain: Chain,
     address: string,
     identifier: string,
-    retries = 3,
+    retries = 1,
   ): Promise<GetNFTResponse> {
     let response;
     try {

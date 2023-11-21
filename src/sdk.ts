@@ -530,11 +530,38 @@ export class OpenSeaSDK {
       "this.chain",
       this.chain,
     );
-    const { nft } = await this.api.getNFT(
-      this.chain,
-      asset.tokenAddress,
-      asset.tokenId,
-    );
+    // const { nft } = await this.api.getNFT(
+    //   this.chain,
+    //   asset.tokenAddress,
+    //   asset.tokenId,
+    // );
+    const nft = {
+      identifier: "1",
+      collection: "pizzap721",
+      contract: "0x169625caf5d3f14e8d9f680db6923343b80d1b1e",
+      token_standard: "erc721",
+      name: "Pizzap to the moon",
+      description: "Pizzap to the moon",
+      image_url:
+        "https://ipfs.io/ipfs/QmRQ7uwE2tMDUEzPj5zeSUYQnHQE6EM4CHsKxFNaKSmTty",
+      metadata_url:
+        "https://ipfs.io/ipfs/QmehMCzfPe2zvbewGc8quDKh1dfCLhs3n6SZ74wNqgLmtE",
+      created_at: " ",
+      updated_at: "2023-11-17T11:48:24.683482",
+      is_disabled: false,
+      is_nsfw: false,
+      animation_url: "",
+      is_suspicious: false,
+      creator: "0x3162175ff0fe037e53573c6761afc54ea9449988",
+      traits: null,
+      owners: [
+        {
+          address: "0xb14d76d3a740c9b55863accad4bac8518912e6c2",
+          quantity: 1,
+        },
+      ],
+      rarity: null,
+    };
     console.log("opensea-js:API-Endpoint/createListing/getNFT", "nft", nft);
     const offerAssetItems = this.getNFTItems(
       [nft],
@@ -567,7 +594,7 @@ export class OpenSeaSDK {
       endPrice,
     );
 
-    const collection = await this.api.getCollection(nft.collection);
+    const collection = await this.api.getCollection("pizzap721");
     console.log(
       "opensea-js:API-Endpoint/createListing/getCollection",
       "collection",
