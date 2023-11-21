@@ -124,6 +124,17 @@ export class OpenSeaAPI {
     orderBy = "created_date",
     ...restOptions
   }: Omit<OrdersQueryOptions, "limit">): Promise<OrderV2> {
+    console.log(
+      "opensea-js:API-Endpoint/getOrder",
+      "side",
+      side,
+      "protocol",
+      protocol,
+      "orderBy",
+      orderBy,
+      "restOptions",
+      restOptions,
+    );
     const { orders } = await this.get<OrdersQueryResponse>(
       getOrdersAPIPath(this.chain, protocol, side),
       serializeOrdersQueryOptions({
@@ -162,6 +173,17 @@ export class OpenSeaAPI {
     orderBy = "created_date",
     ...restOptions
   }: Omit<OrdersQueryOptions, "limit">): Promise<GetOrdersResponse> {
+    console.log(
+      "opensea-js:API-Endpoint/getOrders",
+      "side",
+      side,
+      "protocol",
+      protocol,
+      "orderBy",
+      orderBy,
+      "restOptions",
+      restOptions,
+    );
     const response = await this.get<OrdersQueryResponse>(
       getOrdersAPIPath(this.chain, protocol, side),
       serializeOrdersQueryOptions({
@@ -435,6 +457,13 @@ export class OpenSeaAPI {
   ): Promise<ListNFTsResponse> {
     let response;
     try {
+      console.log(
+        "opensea-js:API-Endpoint/getNFTsByAccount",
+        "chain",
+        chain,
+        "address",
+        address,
+      );
       response = await this.get<ListNFTsResponse>(
         getListNFTsByAccountPath(chain, address),
         {
@@ -467,6 +496,13 @@ export class OpenSeaAPI {
   ): Promise<GetNFTResponse> {
     let response;
     try {
+      console.log(
+        "opensea-js:API-Endpoint/getNFT",
+        "chain",
+        chain,
+        "address",
+        address,
+      );
       response = await this.get<GetNFTResponse>(
         getNFTPath(chain, address, identifier),
       );
@@ -501,7 +537,7 @@ export class OpenSeaAPI {
         "Please use `getNFTsByContract()` or `getNFTsByCollection()` for multichain capabilities.",
       );
     }
-
+    console.log("opensea-js:API-Endpoint/getAssets", "query", query);
     const json = await this.get<{
       estimated_count: number;
       assets: unknown[];
@@ -527,6 +563,7 @@ export class OpenSeaAPI {
    */
   public async getCollection(slug: string): Promise<OpenSeaCollection> {
     const path = getCollectionPath(slug);
+    console.log("opensea-js:API-Endpoint/getCollection", "slug", slug);
     const response = await this.get<GetCollectionResponse>(path);
     return collectionFromJSON(response.collection);
   }
@@ -552,6 +589,7 @@ export class OpenSeaAPI {
 
     let json;
     try {
+      console.log("opensea-js:API-Endpoint/getPaymentTokens", "query", query);
       json = await this.get<unknown[]>(`${API_V1_PATH}/tokens/`, {
         ...query,
         limit: this.pageSize,
@@ -594,6 +632,7 @@ export class OpenSeaAPI {
     query: OpenSeaAssetBundleQuery = {},
     page = 1,
   ): Promise<GetBundlesResponse> {
+    console.log("opensea-js:API-Endpoint/getBundles", "query", query);
     const json = await this.get<{
       estimated_count: number;
       bundles: unknown[];
@@ -647,7 +686,8 @@ export class OpenSeaAPI {
   public async get<T>(apiPath: string, query: object = {}): Promise<T> {
     const qs = this.objectToSearchParams(query);
     const url = `${this.apiBaseUrl}${apiPath}?${qs}`;
-    console.log("opensea-js:API-Endpoint/get", JSON.stringify(url));
+    console.log("opensea-js:API-Endpoint/get", "qs", qs);
+    console.log("opensea-js:API-Endpoint/get", "url", url);
     return await this._fetch({ url });
   }
 
