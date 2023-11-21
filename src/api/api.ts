@@ -744,8 +744,7 @@ export class OpenSeaAPI {
     this.logger(
       `Sending request: ${opts.url} ${JSON.stringify(req).slice(0, 200)}...`,
     );
-    console.log("opensea-js:API-Endpoint/req", JSON.stringify(req));
-    console.log("opensea-js:API-Endpoint/body", JSON.stringify(body));
+    console.log("opensea-js:API-Endpoint/_fetch", "req", req, "body", body);
     return await ethers.utils.fetchJson(
       req,
       body ? JSON.stringify(body) : undefined,
