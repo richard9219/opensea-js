@@ -506,6 +506,7 @@ export class OpenSeaAPI {
       response = await this.get<GetNFTResponse>(
         getNFTPath(chain, address, identifier),
       );
+      console.log("opensea-js:API-Endpoint/getNFT", "response", response);
     } catch (error) {
       _throwOrContinue(error, retries);
       await delay(1000);
