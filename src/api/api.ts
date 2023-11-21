@@ -647,6 +647,7 @@ export class OpenSeaAPI {
   public async get<T>(apiPath: string, query: object = {}): Promise<T> {
     const qs = this.objectToSearchParams(query);
     const url = `${this.apiBaseUrl}${apiPath}?${qs}`;
+    console.log("opensea-js:API-Endpoint/get", JSON.stringify(url));
     return await this._fetch({ url });
   }
 
