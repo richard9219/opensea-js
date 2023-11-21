@@ -492,7 +492,7 @@ export class OpenSeaAPI {
     chain: Chain,
     address: string,
     identifier: string,
-    retries = 1,
+    retries = 3,
   ): Promise<GetNFTResponse> {
     let response;
     try {
@@ -504,10 +504,6 @@ export class OpenSeaAPI {
         address,
         "identifier",
         identifier,
-      );
-
-      console.log(
-        "opensea-js:API-Endpoint/getNFTPath",
         "getNFTPath(chain, address, identifier)",
         getNFTPath(chain, address, identifier),
       );

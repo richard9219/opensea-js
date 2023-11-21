@@ -527,9 +527,6 @@ export class OpenSeaSDK {
       buyerAddress,
       "englishAuction",
       englishAuction,
-    );
-    console.log(
-      "opensea-js:API-Endpoint/createListing",
       "this.chain",
       this.chain,
     );
