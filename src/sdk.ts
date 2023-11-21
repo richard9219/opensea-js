@@ -372,7 +372,25 @@ export class OpenSeaSDK {
     paymentTokenAddress?: string;
   }): Promise<OrderV2> {
     await this._requireAccountIsAvailable(accountAddress);
-
+    console.log(
+      "opensea-js:API-Endpoint/createOffer",
+      "asset",
+      asset,
+      "accountAddress",
+      accountAddress,
+      "startAmount",
+      startAmount,
+      "quantity",
+      quantity,
+      "domain",
+      domain,
+      "salt",
+      salt,
+      "expirationTime",
+      expirationTime,
+      "paymentTokenAddress",
+      paymentTokenAddress,
+    );
     const { nft } = await this.api.getNFT(
       this.chain,
       asset.tokenAddress,
@@ -483,6 +501,38 @@ export class OpenSeaSDK {
   }): Promise<OrderV2> {
     await this._requireAccountIsAvailable(accountAddress);
 
+    console.log(
+      "opensea-js:API-Endpoint/createListing",
+      "asset",
+      asset,
+      "accountAddress",
+      accountAddress,
+      "startAmount",
+      startAmount,
+      "endAmount",
+      endAmount,
+      "quantity",
+      quantity,
+      "domain",
+      domain,
+      "salt",
+      salt,
+      "listingTime",
+      listingTime,
+      "expirationTime",
+      expirationTime,
+      "paymentTokenAddress",
+      paymentTokenAddress,
+      "buyerAddress",
+      buyerAddress,
+      "englishAuction",
+      englishAuction,
+    );
+    console.log(
+      "opensea-js:API-Endpoint/createListing",
+      "this.chain",
+      this.chain,
+    );
     const { nft } = await this.api.getNFT(
       this.chain,
       asset.tokenAddress,
