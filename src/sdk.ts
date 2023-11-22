@@ -624,9 +624,7 @@ export class OpenSeaSDK {
     const map1: Map<string, number> = new Map([
       ["0x0000a26b00c1f0df003000390027140000faa719", 250],
     ]);
-    const map2: Map<string, number> = new Map([
-      ["0x169625caf5d3f14e8d9F680Db6923343b80d1B1E", 50],
-    ]);
+    const map2: Map<string, number> = new Map([]);
 
     const collection = {
       createdDate: date,
