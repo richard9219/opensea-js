@@ -260,8 +260,7 @@ export class OpenSeaSDK {
     const osFees = collection.fees?.openseaFees;
     const creatorFees = collection.fees?.sellerFees;
 
-    // const openseaSellerFeeBasisPoints = feesToBasisPoints(osFees);
-    const openseaSellerFeeBasisPoints = 1;
+    const openseaSellerFeeBasisPoints = feesToBasisPoints(osFees);
     const collectionSellerFeeBasisPoints = feesToBasisPoints(creatorFees);
 
     // Seller basis points
@@ -317,7 +316,7 @@ export class OpenSeaSDK {
     );
 
     return {
-      sellerFee: getConsiderationItem(sellerBasisPoints),
+      sellerFee: getConsiderationItem(sellerBasisPoints * 10),
       openseaSellerFees:
         openseaSellerFeeBasisPoints > 0 && collection.fees
           ? getConsiderationItemsFromFeeCategory(osFees)
