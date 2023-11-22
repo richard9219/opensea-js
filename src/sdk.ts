@@ -261,7 +261,7 @@ export class OpenSeaSDK {
     const creatorFees = collection.fees?.sellerFees;
 
     // const openseaSellerFeeBasisPoints = feesToBasisPoints(osFees);
-    const openseaSellerFeeBasisPoints = 0;
+    const openseaSellerFeeBasisPoints = 1;
     const collectionSellerFeeBasisPoints = feesToBasisPoints(creatorFees);
 
     // Seller basis points
