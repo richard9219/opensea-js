@@ -269,6 +269,20 @@ export class OpenSeaSDK {
       openseaSellerFeeBasisPoints -
       collectionSellerFeeBasisPoints;
 
+    console.log(
+      "opensea-js:API-Endpoint/getFees",
+      "osFees",
+      osFees,
+      "creatorFees",
+      creatorFees,
+      "openseaSellerFeeBasisPoints",
+      openseaSellerFeeBasisPoints,
+      "collectionSellerFeeBasisPoints",
+      collectionSellerFeeBasisPoints,
+      "sellerBasisPoints",
+      sellerBasisPoints,
+    );
+
     const getConsiderationItem = (basisPoints: number, recipient?: string) => {
       return {
         token: paymentTokenAddress,
@@ -280,6 +294,11 @@ export class OpenSeaSDK {
         recipient,
       };
     };
+    console.log(
+      "opensea-js:API-Endpoint/getFees",
+      "getConsiderationItem",
+      getConsiderationItem,
+    );
 
     const getConsiderationItemsFromFeeCategory = (
       feeCategory: Map<string, number>,
@@ -290,6 +309,11 @@ export class OpenSeaSDK {
         },
       );
     };
+    console.log(
+      "opensea-js:API-Endpoint/getFees",
+      "getConsiderationItemsFromFeeCategory",
+      getConsiderationItemsFromFeeCategory,
+    );
 
     return {
       sellerFee: getConsiderationItem(sellerBasisPoints),
@@ -717,12 +741,6 @@ export class OpenSeaSDK {
         sellerFees: map2,
       },
     };
-
-    // console.log(
-    //   "opensea-js:API-Endpoint/createListing/getCollection",
-    //   "collection",
-    //   collection,
-    // );
     const { sellerFee, openseaSellerFees, collectionSellerFees } =
       await this.getFees({
         collection,
