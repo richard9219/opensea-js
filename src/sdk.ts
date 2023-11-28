@@ -1022,6 +1022,22 @@ export class OpenSeaSDK {
       });
     }
 
+    console.log(
+      "opensea-js:API-Endpoint/fulfillOrder",
+      "order.protocolData",
+      order.protocolData,
+      "accountAddress",
+      accountAddress,
+      "recipientAddress",
+      recipientAddress,
+      "extraData",
+      extraData,
+      "domain",
+      domain,
+      "overrides",
+      overrides,
+    );
+
     const { executeAllActions } = await this.seaport_v1_5.fulfillOrder({
       order: order.protocolData,
       accountAddress,
@@ -1036,6 +1052,11 @@ export class OpenSeaSDK {
       transaction.hash,
       EventType.MatchOrders,
       "Fulfilling order",
+    );
+    console.log(
+      "opensea-js:API-Endpoint/fulfillOrder",
+      "_confirmTransaction transaction.hash",
+      transaction.hash,
     );
     return transaction.hash;
   }
