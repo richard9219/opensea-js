@@ -932,7 +932,17 @@ export class OpenSeaSDK {
       order.protocolData,
       order.taker.address,
     );
+    console.log(
+      "opensea-js:API-Endpoint/fulfillPrivateOrder",
+      "counterOrder",
+      counterOrder,
+    );
     const fulfillments = getPrivateListingFulfillments(order.protocolData);
+    console.log(
+      "opensea-js:API-Endpoint/fulfillPrivateOrder",
+      "fulfillments",
+      fulfillments,
+    );
     const transaction = await this.seaport_v1_5
       .matchOrders({
         orders: [order.protocolData, counterOrder],
@@ -945,7 +955,17 @@ export class OpenSeaSDK {
         domain,
       })
       .transact();
+    console.log(
+      "opensea-js:API-Endpoint/fulfillPrivateOrder",
+      "transaction",
+      transaction,
+    );
     const transactionReceipt = await transaction.wait();
+    console.log(
+      "opensea-js:API-Endpoint/fulfillPrivateOrder",
+      "transactionReceipt",
+      transactionReceipt,
+    );
 
     await this._confirmTransaction(
       transactionReceipt.transactionHash,
@@ -1046,8 +1066,17 @@ export class OpenSeaSDK {
       domain,
       overrides,
     });
+    console.log(
+      "opensea-js:API-Endpoint/fulfillOrder",
+      "executeAllActions",
+      executeAllActions,
+    );
     const transaction = await executeAllActions();
-
+    console.log(
+      "opensea-js:API-Endpoint/fulfillOrder",
+      "transaction",
+      transaction,
+    );
     await this._confirmTransaction(
       transaction.hash,
       EventType.MatchOrders,
