@@ -561,18 +561,18 @@ export class OpenSeaSDK {
     //   asset.tokenId,
     // );
     const nft = {
-      identifier: "1",
+      identifier: "2",
       collection: "pizzap721",
       contract: "0x169625caf5d3f14e8d9f680db6923343b80d1b1e",
       token_standard: "erc721",
-      name: "Pizzap to the moon",
-      description: "Pizzap to the moon",
+      name: "Alex Test OP Mint",
+      description: "Alex Test OP Mint",
       image_url:
-        "https://ipfs.io/ipfs/QmRQ7uwE2tMDUEzPj5zeSUYQnHQE6EM4CHsKxFNaKSmTty",
+        "https://i.seadn.io/s/raw/files/9a827171a4e53a961c58dc416d57944c.jpg?w=500&auto=format",
       metadata_url:
-        "https://ipfs.io/ipfs/QmehMCzfPe2zvbewGc8quDKh1dfCLhs3n6SZ74wNqgLmtE",
+        "https://ipfs.io/ipfs/QmUgfCpTQy7j6QUgMtwYGV23kFe94szLujo8ZcXVuvaeSt",
       created_at: " ",
-      updated_at: "2023-11-17T11:48:24.683482",
+      updated_at: "2023-10-11T06:40:08.053071",
       is_disabled: false,
       is_nsfw: false,
       animation_url: "",
@@ -581,7 +581,7 @@ export class OpenSeaSDK {
       traits: null,
       owners: [
         {
-          address: "0xb14d76d3a740c9b55863accad4bac8518912e6c2",
+          address: "0x59F91F9d49064aDc2337D31714392D146c91cEC5",
           quantity: 1,
         },
       ],
